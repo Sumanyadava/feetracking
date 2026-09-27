@@ -1,0 +1,1173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Inter+Tight:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+/* ── Blue / Indigo Design System — Dark Theme (default) ──────────── */
+:root {
+  /* Backgrounds — deep navy, easy on the eyes */
+  --bg:              #0D1117; /* GitHub-style deep navy */
+  --surface:         #161B27; /* Card / Panel */
+  --surface-2:       #1E2535; /* Elevated / Hover / Row highlight */
+  --surface-3:       #111623; /* Header / Deeper panels */
+  --border:          #2A3348; /* Subtle blue-grey border */
+  --border-light:    #1E2535;
+  --border-strong:   #4F8EF7; /* Blue accent border */
+
+  /* Accent — Blue / Indigo */
+  --accent:          #4F8EF7; /* Calm blue — not harsh */
+  --accent-dim:      rgba(79, 142, 247, 0.15);
+  --accent-hover:    #6BA3F8; /* Lighter blue on hover */
+  --gold-border:     #818CF8; /* Soft indigo highlight */
+
+  /* Supporting palette */
+  --secondary-red:   #DC2626; /* Clear danger red */
+  --royal-purple:    #7C3AED; /* Violet accent */
+  --purple-dim:      rgba(124, 58, 237, 0.18);
+  --cyan:            #06B6D4; /* Teal/cyan */
+  --cyan-dim:        rgba(6, 182, 212, 0.15);
+
+  /* Semantic Colors */
+  --success:         #22C55E;
+  --success-dim:     rgba(34, 197, 94, 0.15);
+  --warning:         #F59E0B;
+  --warning-dim:     rgba(245, 158, 11, 0.15);
+  --danger:          #EF4444;
+  --danger-dim:      rgba(239, 68, 68, 0.15);
+  --danger-hover:    #DC2626;
+
+  /* Text — cool blue-white, very readable */
+  --text:            #E6EDF3; /* Soft off-white with blue tint */
+  --text-2:          #8B949E; /* Muted grey */
+  --text-3:          #4D5566; /* Faint subtext */
+  --text-dark:       #0D1117; /* High contrast on blue accent */
+
+  /* Typography — Inter for clean, modern SaaS feel */
+  --font-heading:    'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body:       'Inter', system-ui, sans-serif;
+  --font-mono:       'Fira Code', monospace;
+
+  /* Dimensions & Border Radius */
+  --sidebar-w:       250px;
+  --header-h:        64px;
+  --radius-xs:       4px;
+  --radius-sm:       6px;
+  --radius:          6px;
+  --radius-md:       8px;
+  --radius-lg:       12px;
+
+  /* Elevation — neutral, not colored — easy on the eyes */
+  --shadow-sm:       0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow:          0 2px 8px rgba(0, 0, 0, 0.30);
+  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg:       0 8px 32px rgba(0, 0, 0, 0.40);
+  --glow:            0 0 20px rgba(79, 142, 247, 0.30);
+
+  --transition:      250ms ease;
+}
+
+/* ── Blue / Indigo — Light Theme ─────────────────────────────────── */
+[data-theme="light"] {
+  /* Backgrounds — clean white like Shopeers reference */
+  --bg:              #F3F4F8; /* Very light cool grey */
+  --surface:         #FFFFFF; /* Pure white card */
+  --surface-2:       #EEF1F7; /* Subtle hover tint */
+  --surface-3:       #F8F9FC; /* Header / Sidebar panels */
+  --border:          #E2E6EF; /* Barely-there border */
+  --border-light:    #EEF1F7;
+  --border-strong:   #2563EB; /* Blue accent border */
+
+  /* Accent — clear blue matching Shopeers */
+  --accent:          #2563EB; /* Primary blue */
+  --accent-dim:      rgba(37, 99, 235, 0.10);
+  --accent-hover:    #1D4ED8; /* Deeper blue on hover */
+  --gold-border:     #4F8EF7; /* Lighter blue border */
+
+  /* Supporting palette */
+  --secondary-red:   #DC2626;
+  --royal-purple:    #7C3AED;
+  --purple-dim:      rgba(124, 58, 237, 0.10);
+  --cyan:            #0891B2;
+  --cyan-dim:        rgba(8, 145, 178, 0.10);
+
+  /* Semantic Colors */
+  --success:         #16A34A;
+  --success-dim:     rgba(22, 163, 74, 0.10);
+  --warning:         #D97706;
+  --warning-dim:     rgba(217, 119, 6, 0.10);
+  --danger:          #DC2626;
+  --danger-dim:      rgba(220, 38, 38, 0.10);
+  --danger-hover:    #B91C1C;
+
+  /* Text — dark, clear, high contrast */
+  --text:            #0F172A; /* Near-black */
+  --text-2:          #475569; /* Slate grey */
+  --text-3:          #94A3B8; /* Light slate */
+  --text-dark:       #FFFFFF; /* High contrast on blue accent */
+
+  /* Elevation — very soft, like a real card */
+  --shadow-sm:       0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow:          0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-md:       0 4px 16px rgba(15, 23, 42, 0.10);
+  --shadow-lg:       0 8px 32px rgba(15, 23, 42, 0.12);
+  --glow:            0 0 20px rgba(37, 99, 235, 0.20);
+}
+
+/* ── Reset & Typography ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings use Inter Tight — clean and modern */
+h1, h2, h3, h4, h5, h6,
+.page-title,
+.card-title,
+.modal-title,
+.login-title,
+.stat-label,
+.nav-section-label,
+.tab-btn,
+.btn,
+.badge,
+th {
+  font-family: var(--font-heading);
+  letter-spacing: 0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: var(--font-heading); }
+input, select, textarea { font-family: var(--font-body); }
+code, pre { font-family: var(--font-mono); }
+img { display: block; max-width: 100%; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+}
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--bg);
+}
+.app-content {
+  flex: 1;
+  padding: 28px 36px;
+  overflow-y: auto;
+}
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.page-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  margin-top: 4px;
+}
+
+/* ── Card ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+.card:hover {
+  background: var(--surface-2);
+  border-color: rgba(225, 29, 72, 0.55);
+  border-top-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.card-sm { padding: 16px; }
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Stats Grid (Quest / Treasury KPI Cards) ─────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.stat-card:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.stat-card .icon-wrap {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-xs);
+  display: grid; place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.stat-card .stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(225, 29, 72, 0.18);
+}
+.stat-card .stat-label {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.stat-card .stat-delta {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  font-family: var(--font-body);
+}
+
+/* ── Buttons (QuestUI Variants) ─────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-sm { padding: 6px 14px; font-size: 0.78rem; gap: 5px; }
+.btn-xs { padding: 4px 10px; font-size: 0.72rem; gap: 4px; border-radius: var(--radius-xs); }
+.btn-lg { padding: 12px 28px; font-size: 0.95rem; gap: 10px; }
+.btn-icon { padding: 8px; gap: 0; }
+.btn-icon-sm { padding: 6px; gap: 0; }
+
+/* Primary Button: Gold Fill with Dark Text & Gold Border */
+.btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+  border: 1px solid var(--gold-border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--glow);
+}
+
+/* Secondary Button: Transparent with Gold Border */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.btn-secondary:hover {
+  background: var(--accent-dim);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Ghost Button: Inscribed Brown Texture */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* Destructive Button: Deep Crimson Fill */
+.btn-danger {
+  background: var(--secondary-red);
+  color: var(--text-dark);
+  border: 1px solid var(--danger);
+}
+.btn-danger:hover {
+  background: var(--danger-hover);
+  box-shadow: 0 0 16px rgba(159, 18, 57, 0.5);
+}
+
+.btn-success {
+  background: #15803d;
+  color: #fff;
+  border: 1px solid var(--success);
+}
+.btn-success:hover {
+  background: var(--success);
+  color: #0a1a0a;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  border-color: var(--border) !important;
+}
+
+/* ── Chips & Badges (Carved, Upper-Case, Inscribed) ─────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.badge-success {
+  background: var(--success-dim);
+  color: #4ADE80;
+  border-color: rgba(34, 197, 94, 0.30);
+}
+.badge-warning {
+  background: var(--warning-dim);
+  color: #FBBF24;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.badge-danger {
+  background: var(--danger-dim);
+  color: #FB7185;
+  border-color: rgba(225, 29, 72, 0.35);
+}
+.badge-neutral {
+  background: var(--surface);
+  color: var(--text-2);
+  border-color: var(--border);
+}
+.badge-accent {
+  background: var(--accent);
+  color: var(--text-dark);
+  border-color: var(--gold-border);
+  font-weight: 700;
+}
+.badge-cyan {
+  background: var(--purple-dim);
+  color: #C084FC;
+  border-color: rgba(124, 58, 237, 0.35);
+}
+
+/* ── Tables (Ornate Ledger Structure) ───────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+thead tr {
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+}
+th {
+  padding: 12px 18px;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.74rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--surface-2);
+  vertical-align: middle;
+  color: var(--text);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr { transition: background var(--transition); }
+tbody tr:hover { background: var(--surface-2); }
+tbody tr.clickable { cursor: pointer; }
+
+/* ── Form Controls (Inputs / Selects / Textareas) ────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.form-textarea {
+  height: auto;
+  min-height: 80px;
+  resize: vertical;
+}
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+  border-color: var(--accent);
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-2);
+}
+.form-select option {
+  background: var(--surface);
+  color: var(--text);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.form-full { grid-column: 1 / -1; }
+
+/* ── Modal (QuestUI Ornate Dialog) ──────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 4, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.25s ease;
+}
+.modal-sm  { max-width: 480px; }
+.modal-md  { max-width: 620px; }
+.modal-lg  { max-width: 780px; }
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+}
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.modal-body { padding: 24px; }
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--surface-3);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Sidebar (Kingdom Citadel Navigation) ────────────────────────── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--surface-3);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-logo .logo-icon {
+  width: 38px; height: 38px;
+  background: var(--accent);
+  color: var(--text-dark);
+  border-radius: var(--radius-xs);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  box-shadow: var(--glow);
+  border: 1px solid var(--gold-border);
+}
+.sidebar-logo .logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.sidebar-logo .logo-sub {
+  font-size: 0.72rem;
+  color: var(--text-2);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+}
+.nav-section-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 8px 12px 6px;
+  opacity: 0.85;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-xs);
+  color: var(--text-2);
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+.nav-item:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
+}
+.nav-item.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.nav-item .nav-icon { width: 16px; height: 16px; flex-shrink: 0; }
+.sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+}
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.sidebar-user:hover {
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+}
+.user-avatar {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-xs);
+  background: var(--accent);
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  display: grid; place-items: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.user-info .user-name {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.user-info .user-role {
+  font-size: 0.72rem;
+  color: var(--text-2);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.app-header {
+  height: var(--header-h);
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  width: 320px;
+  transition: all var(--transition);
+}
+.header-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.header-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  width: 100%;
+}
+.header-search input::placeholder { color: var(--text-2); }
+
+/* ── Filters Bar ────────────────────────────────────────────────── */
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.filter-select {
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.filter-select:hover { border-color: var(--accent); }
+.filter-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* ── Avatar ─────────────────────────────────────────────────────── */
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  border: 1px solid var(--accent);
+  display: grid; place-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.avatar-lg { width: 52px; height: 52px; font-size: 1.2rem; }
+.avatar-sm { width: 30px; height: 30px; font-size: 0.72rem; }
+
+/* ── Charts ─────────────────────────────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.chart-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+/* ── Overdue Items ──────────────────────────────────────────────── */
+.overdue-list { display: flex; flex-direction: column; gap: 10px; }
+.overdue-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--secondary-red);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+.overdue-item:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-dim);
+}
+
+/* ── Empty state ────────────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 24px;
+  color: var(--text-2);
+  font-style: italic;
+}
+.empty-state svg { opacity: 0.5; color: var(--accent); }
+.empty-state p { font-size: 0.95rem; }
+
+/* ── Divider ─────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+/* ── Fee Month Grid (Student Detail) ────────────────────────────── */
+.fee-month-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.fee-month-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.fee-month-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.fee-month-card.paid {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.1);
+}
+.fee-month-card.partial {
+  border-color: rgba(202, 138, 4, 0.4);
+  background: rgba(202, 138, 4, 0.1);
+}
+.fee-month-card.unpaid {
+  border-color: rgba(153, 27, 27, 0.4);
+  background: rgba(153, 27, 27, 0.1);
+}
+.fee-month-card.waived {
+  border-color: var(--border);
+  opacity: 0.55;
+}
+
+.fee-month-label {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.fee-month-status {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Tab Nav (Quest Scrolls) ─────────────────────────────────────── */
+.tab-nav {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 22px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+  background: transparent;
+  border: none;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.tab-btn:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.tab-btn.active {
+  background: var(--accent);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Search Highlight ───────────────────────────────────────────── */
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.search-wrap:hover { border-color: var(--accent); }
+.search-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.search-wrap input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  width: 100%;
+}
+.search-wrap input::placeholder { color: var(--text-2); }
+
+/* ── Info Row ───────────────────────────────────────────────────── */
+.info-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.info-item { display: flex; flex-direction: column; gap: 3px; }
+.info-item .label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 700;
+}
+.info-item .value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Progress Bar ───────────────────────────────────────────────── */
+.progress-bar {
+  height: 6px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+.progress-fill.success { background: var(--success); }
+.progress-fill.warning { background: var(--warning); }
+.progress-fill.danger  { background: var(--danger); }
+
+/* ── Login Page (Quest Citadel Gate) ────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(225, 29, 72, 0.18), transparent),
+    var(--bg);
+  padding: 24px;
+}
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+}
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.login-logo .logo-icon {
+  width: 50px; height: 50px;
+  background: var(--accent);
+  color: var(--text-dark);
+  border-radius: var(--radius-sm);
+  display: grid; place-items: center;
+  box-shadow: var(--glow);
+  border: 1px solid var(--gold-border);
+}
+.login-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(225, 29, 72, 0.35);
+}
+.login-sub {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Month Selector Chips ────────────────────────────────────────── */
+.month-selector { display: flex; flex-wrap: wrap; gap: 8px; }
+.month-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text-2);
+}
+.month-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.month-chip.selected {
+  border-color: var(--gold-border);
+  background: var(--accent);
+  color: var(--text-dark);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+.month-chip.paid {
+  opacity: 0.4;
+}
+
+/* ── Helpers ─────────────────────────────────────────────────────── */
+.text-muted { color: var(--text-2); font-size: 0.85rem; }
+.text-xs    { font-size: 0.75rem; }
+.text-sm    { font-size: 0.85rem; }
+.fw-600     { font-weight: 600; }
+.fw-700     { font-weight: 700; }
+.mt-8       { margin-top: 8px; }
+.mt-16      { margin-top: 16px; }
+.mt-24      { margin-top: 24px; }
+.gap-8      { gap: 8px; }
+.flex       { display: flex; }
+.flex-col   { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.flex-wrap  { flex-wrap: wrap; }
+
+/* ── Theme Toggle Button ─────────────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: 8px;
+}
+.theme-toggle:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--accent);
+}
+.theme-toggle-track {
+  width: 34px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--border);
+  position: relative;
+  flex-shrink: 0;
+  transition: background var(--transition);
+  border: 1px solid var(--border-strong);
+}
+.theme-toggle-track.on {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+.theme-toggle-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-3);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform var(--transition), background var(--transition);
+}
+.theme-toggle-track.on .theme-toggle-thumb {
+  transform: translateX(16px);
+  background: var(--accent);
+}
+
+/* ── Subtle Animations ──────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Receipt Print Styles ────────────────────────────────────────── */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print { display: none !important; }
+}
